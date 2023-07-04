@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -90,17 +91,11 @@ public class MainActivity extends AppCompatActivity {
             catch (IndexOutOfBoundsException e){
                 e.printStackTrace();
                 Log.d("strData",e.getLocalizedMessage());
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Are You Sure You Want to Exit?")
-                        .setTitle("Exit !")
-                        .setNegativeButton("NO", null)
-                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finishAffinity();
-                                System.exit(0);
-                            }
-                        }).show();
+
+                Intent intent=new Intent(MainActivity.this,MainActivity.class);
+                overridePendingTransition(0,0);
+                startActivity(intent);
+                overridePendingTransition(0,0);
             }
 
 
